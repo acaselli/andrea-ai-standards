@@ -27,6 +27,8 @@ andrea-ai-standards/
 ├── README.md
 ├── LICENSE
 ├── AGENTS.md
+├── VERSION
+├── CHANGELOG.md
 └── skills/
     └── andrea-ui-design/
         ├── SKILL.md
@@ -37,3 +39,9 @@ andrea-ai-standards/
 Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane and routes table work to a detailed data-table standard.
 
 The repository will grow from real usage and repeated preferences, not by accumulating generic best practices or speculative placeholder guidance.
+
+## Versioning and updates
+
+The current version lives in `VERSION` and changes are recorded in `CHANGELOG.md`, following Semantic Versioning: patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance. Every change that alters guidance bumps the version and adds a changelog entry in the same commit.
+
+Keeping the local clone current is the harness's job, not the model's. A `SessionStart` hook in `~/.claude/settings.json` and `~/.codex/hooks.json` runs `git pull --ff-only` on the clone at the start of every session and fails silently when offline or sandboxed. Updated standards apply from the next session.
