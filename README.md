@@ -27,6 +27,7 @@ andrea-ai-standards/
 ├── README.md
 ├── LICENSE
 ├── AGENTS.md
+├── install.sh
 ├── VERSION
 ├── CHANGELOG.md
 └── skills/
@@ -39,6 +40,19 @@ andrea-ai-standards/
 Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane and routes table work to a detailed data-table standard.
 
 The repository will grow from real usage and repeated preferences, not by accumulating generic best practices or speculative placeholder guidance.
+
+## Install on a new machine
+
+Clone the repository somewhere permanent, then run the installer:
+
+```sh
+git clone https://github.com/acaselli/andrea-ai-standards.git ~/Code_Repos/andrea-ai-standards
+~/Code_Repos/andrea-ai-standards/install.sh
+```
+
+The script is idempotent. It symlinks every `skills/andrea-*` Skill into `~/.claude/skills` and `~/.codex/skills`, links `~/.codex/AGENTS.md` to `AGENTS.md`, adds an `@` import of `AGENTS.md` to `~/.claude/CLAUDE.md` (creating the file if needed), and adds the `SessionStart` auto-sync hook to `~/.claude/settings.json` and `~/.codex/hooks.json`. Re-run it after adding a new Skill. It refuses to run from a linked worktree so a throwaway workspace is never wired in by mistake.
+
+Codex asks you to trust changed hooks on its next launch; run `codex` once and accept.
 
 ## Versioning and updates
 
