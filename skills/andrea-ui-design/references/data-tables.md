@@ -115,7 +115,7 @@ Use a skeleton when appropriate, and make it mirror the final table: preserve he
 
 Plan separately for initial loading failure, background refresh, mutations, and relevant partial failures. If stale data remains safe and useful during refresh, keep it visible and show restrained refresh feedback instead of replacing the table with an empty spinner. During mutations, communicate what is pending and prevent only interactions that would conflict.
 
-Use persistent inline feedback for information the user must retain or act on. For transient mutation success and non-blocking errors, prefer Sonner at `bottom-right` unless the project already has a deliberate notification pattern. For longer asynchronous work, use one promise/lifecycle toast that moves from loading to success or error rather than emitting unrelated toasts.
+Use persistent inline feedback for information the user must retain or act on, and toasts only for transient, non-blocking feedback. Write and place every failure message according to [errors-and-feedback.md](errors-and-feedback.md).
 
 ## Handle smaller viewports
 
