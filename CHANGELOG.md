@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.1.1] - 2026-09-02
+
+### Added
+
+- `install.sh`: idempotent setup of skills, instruction files, and the auto-sync hook on a new machine.
+
 ## [0.1.0] - 2026-09-01
 
 ### Added
