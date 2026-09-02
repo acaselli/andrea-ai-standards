@@ -46,7 +46,7 @@ The repository will grow from real usage and repeated preferences, not by accumu
 Clone the repository somewhere permanent, then run the installer:
 
 ```sh
-git clone git@github.com:acaselli/andrea-ai-standards.git ~/Code_Repos/andrea-ai-standards
+git clone https://github.com/acaselli/andrea-ai-standards.git ~/Code_Repos/andrea-ai-standards
 ~/Code_Repos/andrea-ai-standards/install.sh
 ```
 
