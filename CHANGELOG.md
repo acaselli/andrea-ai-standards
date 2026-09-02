@@ -2,6 +2,14 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.2.0] - 2026-09-02
+
+### Added
+
+- `AGENTS.md`: human-readable date convention (`DD MMMM YYYY` in human-facing content, ISO 8601 for machine-readable data) and versioning/changelog requirements for every web app, migrated from the pre-repo global instructions.
+- `andrea-ui-design`: component stack standard (shadcn/ui on Base UI, catalog check before hand-rolling, no default browser controls) and web app defaults (collapsible sidebar shell, light and dark mode, Italian and English i18n from the start).
+- `references/data-tables.md`: concrete pagination defaults (50 rows per page, 25/50/100/All selector, visible total row count).
+
 ## [0.1.1] - 2026-09-02
 
 ### Added
