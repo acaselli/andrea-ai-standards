@@ -34,10 +34,11 @@ andrea-ai-standards/
     └── andrea-ui-design/
         ├── SKILL.md
         └── references/
-            └── data-tables.md
+            ├── data-tables.md
+            └── errors-and-feedback.md
 ```
 
-Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane and routes table work to a detailed data-table standard.
+Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane (component stack, library selection, web app defaults) and routes table work and error or feedback work to their detailed reference standards.
 
 The repository will grow from real usage and repeated preferences, not by accumulating generic best practices or speculative placeholder guidance.
 

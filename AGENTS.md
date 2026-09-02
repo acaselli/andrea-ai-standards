@@ -10,6 +10,12 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - Apply the relevant `andrea-*` Skill for specialized work. For frontend, UI, or UX work, use `andrea-ui-design` and load only the references relevant to the task.
 - Do not derive a UI directly from backend, API, or database structure; organize it around the user's goals and information needs.
 
+## Errors
+
+- Write every user-facing error for someone who does not know or care about the app's internals: what happened, in their terms, and what to do next. No status codes, exception text, or internal names on screen.
+- Put the technical detail in the log instead: status code, request and user identifiers, stack trace, and the payload with secrets and personal data stripped.
+- For the wording, placement, and examples, follow `references/errors-and-feedback.md` in the `andrea-ui-design` Skill.
+
 ## Human-readable dates
 
 - Display dates in human-facing content — UI, documentation, changelogs, release notes, prose, and messages — as `DD MMMM YYYY`, for example `02 March 2026`. This avoids confusion between European and American numeric formats.
