@@ -92,6 +92,8 @@ A row click must not make embedded controls ambiguous: menu triggers, links, sel
 
 Assume a dataset that can grow needs pagination unless the product has a justified alternative such as bounded data or deliberate virtualization/infinite loading. Include the current page, navigation controls, and sensible page-size choices.
 
+Unless the product justifies otherwise, default to 50 rows per page with a rows-per-page selector offering 25 / 50 / 100 / All, and always show the total row count (e.g. `1–50 of 123`).
+
 Choose client- or server-side pagination from expected dataset size and application architecture. Do not fetch thousands of records solely to paginate them in the browser when the server can page, filter, and sort. Keep search, filters, sorting, page, and page size consistent in one query state so results and controls cannot drift apart.
 
 ## Design every table state
