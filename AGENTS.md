@@ -5,10 +5,27 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 ## How to work
 
 - Prefer the simplest design that meets the requirement. When a request adds avoidable complexity, say so and propose the simpler option before building.
+- If you notice something I likely missed — an edge case, a missing reverse action, a small addition with outsized benefit — implement it when it's trivial and clearly in scope, otherwise point it out and propose it. Simplicity means no unnecessary machinery, not doing the bare minimum.
+- Don't be scared to propose bold ideas that meaningfully benefit the work — a rework, a deletion, a simpler approach to the whole problem. Propose them plainly with the trade-offs; never build them unasked.
+- Treat these as explicit-request-only: deleting files beyond the task's scope, dropping or resetting databases, rewriting or force-pushing git history, killing processes you didn't start, and bulk find-and-replace across the repo. When in doubt, ask first.
 - Treat explicit project instructions as overrides to these personal defaults.
 - Prefer established project components and patterns when they fit the task and do not conflict with the applicable standards.
 - Apply the relevant `andrea-*` Skill for specialized work. For frontend, UI, or UX work, use `andrea-ui-design` and load only the references relevant to the task.
 - Do not derive a UI directly from backend, API, or database structure; organize it around the user's goals and information needs.
+
+## Writing code
+
+- Keep code type-safe: declare meaningful types so mistakes surface before the app runs. In TypeScript, avoid `any` (and casts that only silence errors) unless there is no reasonably typed alternative or I explicitly ask for it.
+- Don't comment every line. Comment what the code can't show: a function's purpose and usage, or a non-obvious constraint.
+- Keep comments up to date when changing code — a stale comment is worse than none.
+
+## Tests
+
+- Few focused tests beat many shallow ones. Cover the happy path, the edge cases that matter, and the specific bug being fixed — not the obvious, and not every permutation. Endless smoke tests are slop.
+- Test behavior through the public interface, not implementation details, so tests survive refactors of the internals.
+- A test that cannot fail is worthless. Never mock the thing under test; mock only at real boundaries such as network, clock, and filesystem, and prefer real objects when they are cheap.
+- When a test fails, assume the code is wrong before the test. Never weaken an assertion, skip, or delete a test just to go green; if the test's expectation is genuinely outdated, say so and change it visibly.
+- When fixing a bug, first write a failing test that reproduces it, then fix the code. Run the tests you touched before calling the work done.
 
 ## Errors
 
@@ -33,7 +50,7 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 ## Agents and background work
 
 - Subagents that write code, review code, or make decisions run on the same model as the main session; never downgrade them. A smaller or faster model is acceptable only for simple read-only lookups such as file searches.
-- When you start a server, launch it once as a single background process, confirm readiness with a bounded foreground check (a few retries, well under a minute), report the URL, and end the turn. Leave the server running. Do not leave readiness polls, log tails, or watch loops running in the background.
+- When you start a server, launch it once as a single process fully detached from your session — `setsid cmd > logfile 2>&1 &` where available (Linux), otherwise `nohup cmd > logfile 2>&1 &` plus `disown` (macOS) — never as a harness-tracked background task, which keeps your turn "running" forever in tools like Conductor. Confirm readiness with a bounded foreground check (a few retries, well under a minute), then report the URL, the log file location, and the exact command to stop the server, and end the turn. Mind that wrappers like `pnpm dev` spawn nested children, so killing the wrapper PID alone can orphan them: with `setsid`, stop the whole group via `kill -- -<pid>`; otherwise kill by command-line match (`pkill -f '<distinctive part of cmd>'`), making the match workspace-specific — include the port or workspace path — so parallel workspaces are untouched. Leave the server running. Do not leave readiness polls, log tails, or watch loops running in the background.
 
 ## Parallel workspaces
 
