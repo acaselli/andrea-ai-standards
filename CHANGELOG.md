@@ -2,6 +2,21 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.4.0] - 04 September 2026
+
+### Added
+
+- `AGENTS.md`: "Writing code" section (type safety and no `any`, comment what the code can't show, keep comments current) and "Tests" section (few focused tests, behavior over implementation, no un-failable tests, never weaken a test to go green, failing test first when fixing bugs).
+- `AGENTS.md`: "Pull requests" section — human-readable titles following the repository's conventions, problem-first descriptions with a bad/good example, and a footer naming the model and harness.
+- `AGENTS.md`: initiative rules in "How to work" — implement or propose small things I likely missed, propose bold ideas without building them unasked, a named list of explicit-request-only destructive actions, and questions are read-only.
+- `AGENTS.md`: delegation rule — match ceremony to the task and assign file ownership when agents run in parallel.
+- `CLAUDE.md`: repo-maintenance instructions for agents working in this repository (version and changelog bump on every guidance change, Skill descriptions as trigger conditions), kept out of the global `AGENTS.md`.
+
+### Changed
+
+- `AGENTS.md`: servers must be launched fully detached (`setsid` on Linux, `nohup … & disown` on macOS), never as a harness-tracked background task that keeps the turn running in Conductor; report the log file and the exact stop command, and stop wrapper processes like `pnpm dev` as a group or by a workspace-specific command-line match.
+- `andrea-ui-design`: Skill description now includes the everyday trigger words page, screen, layout, and styling.
+
 ## [0.3.0] - 02 September 2026
 
 ### Added

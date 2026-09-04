@@ -1,6 +1,6 @@
 ---
 name: andrea-ui-design
-description: Apply Andrea's opinionated UI and UX standards to web interfaces. Use when designing, implementing, or modifying frontend UI; structuring application information; choosing UI libraries or components; writing user-facing error messages, validation feedback, notifications, or toasts; or making decisions about tables, data grids, forms, dashboards, navigation, application states, responsive behavior, and interaction patterns.
+description: Apply Andrea's opinionated UI and UX standards to web interfaces. Use when designing, implementing, or modifying frontend UI, a page or screen, layout, or styling; structuring application information; choosing UI libraries or components; writing user-facing error messages, validation feedback, notifications, or toasts; or making decisions about tables, data grids, forms, dashboards, navigation, application states, responsive behavior, and interaction patterns.
 ---
 
 # Andrea UI Design
