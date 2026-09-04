@@ -10,6 +10,7 @@ Notable changes to these standards. Versions follow [Semantic Versioning](https:
 - `AGENTS.md`: "Pull requests" section — human-readable titles following the repository's conventions, problem-first descriptions with a bad/good example, and a footer naming the model and harness.
 - `AGENTS.md`: initiative rules in "How to work" — implement or propose small things I likely missed, propose bold ideas without building them unasked, a named list of explicit-request-only destructive actions, and questions are read-only.
 - `AGENTS.md`: delegation rule — match ceremony to the task and assign file ownership when agents run in parallel.
+- `CLAUDE.md`: repo-maintenance instructions for agents working in this repository (version and changelog bump on every guidance change, Skill descriptions as trigger conditions), kept out of the global `AGENTS.md`.
 
 ### Changed
 

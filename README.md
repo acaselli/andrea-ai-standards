@@ -27,6 +27,7 @@ andrea-ai-standards/
 ├── README.md
 ├── LICENSE
 ├── AGENTS.md
+├── CLAUDE.md
 ├── install.sh
 ├── VERSION
 ├── CHANGELOG.md
