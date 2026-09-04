@@ -8,6 +8,7 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - If you notice something I likely missed — an edge case, a missing reverse action, a small addition with outsized benefit — implement it when it's trivial and clearly in scope, otherwise point it out and propose it. Simplicity means no unnecessary machinery, not doing the bare minimum.
 - Don't be scared to propose bold ideas that meaningfully benefit the work — a rework, a deletion, a simpler approach to the whole problem. Propose them plainly with the trade-offs; never build them unasked.
 - Treat these as explicit-request-only: deleting files beyond the task's scope, dropping or resetting databases, rewriting or force-pushing git history, killing processes you didn't start, and bulk find-and-replace across the repo. When in doubt, ask first.
+- Questions are read-only. When I ask how or why something works, answer; do not change code until I ask for a change.
 - Treat explicit project instructions as overrides to these personal defaults.
 - Prefer established project components and patterns when they fit the task and do not conflict with the applicable standards.
 - Apply the relevant `andrea-*` Skill for specialized work. For frontend, UI, or UX work, use `andrea-ui-design` and load only the references relevant to the task.
@@ -47,8 +48,17 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - Bump the version and add a changelog entry when shipping user-visible changes; make the current version visible somewhere in the app (footer, about dialog, or similar).
 - Date changelog entries with the human-readable format above (`02 August 2026`).
 
+## Pull requests
+
+- Write the title as a short, human-readable line that says why the change matters; it usually becomes the commit message, so follow the conventions visible in the repository's recent history.
+- Open the description with the problem in the user's terms, based on my original request, then briefly explain the solution. Do not lead with an inventory of what was changed where.
+  - Bad: "Add null guard to PaymentRow date formatter and update fixtures."
+  - Good: "Payments without a due date crashed the payments table. They now show an empty date cell instead."
+- End the description with one line naming the model and harness that made the change, for example `Made with Claude Fable 5 via Claude Code in Conductor`.
+
 ## Agents and background work
 
+- Match ceremony to the task. Do not spawn subagents or parallel workflows for work a single agent finishes in one pass; delegate for breadth (many independent searches or files) or for adversarial review. When several agents do work in parallel, assign file ownership upfront so they never edit the same files.
 - Subagents that write code, review code, or make decisions run on the same model as the main session; never downgrade them. A smaller or faster model is acceptable only for simple read-only lookups such as file searches.
 - When you start a server, launch it once as a single process fully detached from your session — `setsid cmd > logfile 2>&1 &` where available (Linux), otherwise `nohup cmd > logfile 2>&1 &` plus `disown` (macOS) — never as a harness-tracked background task, which keeps your turn "running" forever in tools like Conductor. Confirm readiness with a bounded foreground check (a few retries, well under a minute), then report the URL, the log file location, and the exact command to stop the server, and end the turn. Mind that wrappers like `pnpm dev` spawn nested children, so killing the wrapper PID alone can orphan them: with `setsid`, stop the whole group via `kill -- -<pid>`; otherwise kill by command-line match (`pkill -f '<distinctive part of cmd>'`), making the match workspace-specific — include the port or workspace path — so parallel workspaces are untouched. Leave the server running. Do not leave readiness polls, log tails, or watch loops running in the background.
 
