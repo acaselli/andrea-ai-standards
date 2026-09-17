@@ -62,6 +62,12 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - Subagents that write code, review code, or make decisions run on the same model as the main session; never downgrade them. A smaller or faster model is acceptable only for simple read-only lookups such as file searches.
 - When you start a server, launch it once as a single process fully detached from your session — `setsid cmd > logfile 2>&1 &` where available (Linux), otherwise `nohup cmd > logfile 2>&1 &` plus `disown` (macOS) — never as a harness-tracked background task, which keeps your turn "running" forever in tools like Conductor. Confirm readiness with a bounded foreground check (a few retries, well under a minute), then report the URL, the log file location, and the exact command to stop the server, and end the turn. Mind that wrappers like `pnpm dev` spawn nested children, so killing the wrapper PID alone can orphan them: with `setsid`, stop the whole group via `kill -- -<pid>`; otherwise kill by command-line match (`pkill -f '<distinctive part of cmd>'`), making the match workspace-specific — include the port or workspace path — so parallel workspaces are untouched. Leave the server running. Do not leave readiness polls, log tails, or watch loops running in the background.
 
+## External services via MCP
+
+- Reads through an MCP server (list, get, search, logs) need no confirmation.
+- Before any MCP call that creates, updates, deploys, or publishes something in an external service — Auth0, Cloudflare, or any other — stop and ask me first. Name the tool, the object it targets, and the exact values that will change, then wait for an explicit yes. One confirmation covers one call; ask again for the next.
+- If I decline, do not reach the same result through a CLI or the raw API instead.
+
 ## Parallel workspaces
 
 Several worktrees of one project may run side by side (Conductor and similar tools).
