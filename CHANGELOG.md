@@ -2,6 +2,13 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.5.0] - 06 October 2026
+
+### Added
+
+- `AGENTS.md`: "Dependency updates" section — Dependabot alerts and security updates always on; version updates monthly, grouped per ecosystem, with a 7-day cooldown and runtime majors ignored; Docker image updates kept because images get no alerts; a 7-day minimum release age in the package manager, waived per package for vulnerabilities that reach the running app; alerts judged by exposure, not severity; Dependabot pull requests merged without their own version bump, listed in the next release.
+- `AGENTS.md`: "External services via MCP" section — confirm before any MCP call that creates, updates, deploys, or publishes, one confirmation per call, and no CLI or raw-API workaround after a refusal (merged in #7 without its own entry).
+
 ## [0.4.0] - 04 September 2026
 
 ### Added

@@ -48,6 +48,15 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - Bump the version and add a changelog entry when shipping user-visible changes; make the current version visible somewhere in the app (footer, about dialog, or similar).
 - Date changelog entries with the human-readable format above (`02 August 2026`).
 
+## Dependency updates
+
+- Keep Dependabot alerts and security updates on for every repository: they open a fix as soon as a vulnerability is published, regardless of schedule or cooldown.
+- Run version updates monthly, one grouped pull request per ecosystem (packages, GitHub Actions, Docker images, compose images), minor and patch together, with a 7-day cooldown. Package majors arrive one by one; runtime majors (Node, the database) are ignored and done as deliberate migrations. Staying roughly current keeps a security fix a small bump.
+- Keep the Docker image updates even when nothing else changes: Dependabot raises no alerts for container images, so they are how base-image fixes arrive.
+- Where the package manager supports it, refuse releases younger than 7 days (pnpm `minimumReleaseAge`). For a vulnerability that affects the running app, exempt that one package instead of waiting; one only reachable at build time can wait.
+- Judge an alert by exposure, not its severity label: does the package ship in the production artifact, and can untrusted input reach it?
+- Merge a Dependabot pull request once CI passes, without a version bump of its own; the next release's changelog entry lists the updates merged since the previous one. A fix that matters to the running app ships in its own release right away.
+
 ## Pull requests
 
 - Write the title as a short, human-readable line that says why the change matters; it usually becomes the commit message, so follow the conventions visible in the repository's recent history.
