@@ -47,6 +47,7 @@ I am Andrea. I build web apps and care about keeping complex things as simple as
 - Every web app maintains a changelog and an app version from day one.
 - Bump the version and add a changelog entry when shipping user-visible changes; make the current version visible somewhere in the app (footer, about dialog, or similar).
 - Date changelog entries with the human-readable format above (`02 August 2026`).
+- Keep the version in one file and have the build, health endpoint, and release checks read it from there. Where it must be repeated, a CI check fails when the copies disagree; when bumping, search the repository for the old version, update every copy, and run that check before pushing.
 
 ## Dependency updates
 
