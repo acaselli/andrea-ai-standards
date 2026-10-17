@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.6.0] - 17 October 2026
+
+### Added
+
+- `AGENTS.md`: "Versioning and changelog" — keep the version in one file that everything else reads; where it must be repeated, a CI check enforces that the copies match, and a bump updates every copy and runs that check before pushing.
+
 ## [0.5.0] - 06 October 2026
 
 ### Added
