@@ -14,7 +14,7 @@ CLAUDE_HOME="${CLAUDE_HOME:-$HOME/.claude}"
 CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 # Express the path via $HOME when possible so the hook survives a renamed user directory.
 case "$REPO" in "$HOME"/*) HOOK_REPO="\$HOME${REPO#"$HOME"}" ;; *) HOOK_REPO="$REPO" ;; esac
-HOOK_CMD="git -C \"$HOOK_REPO\" pull --ff-only --quiet >/dev/null 2>&1 || true"
+HOOK_CMD="bash \"$HOOK_REPO/sync.sh\" 2>/dev/null || true"
 
 say() { printf '  %s\n' "$*"; }
 
@@ -58,7 +58,8 @@ path, cmd = sys.argv[1], sys.argv[2]
 data = json.load(open(path)) if os.path.exists(path) else {}
 hooks = data.setdefault("hooks", {})
 entries = hooks.setdefault("SessionStart", [])
-mine = lambda e: any("andrea-ai-standards" in h.get("command", "") and "pull --ff-only" in h.get("command", "") for h in e.get("hooks", []))
+# Also match the older inline "git pull --ff-only" hook so re-running replaces it.
+mine = lambda e: any("andrea-ai-standards" in h.get("command", "") and ("sync.sh" in h.get("command", "") or "pull --ff-only" in h.get("command", "")) for h in e.get("hooks", []))
 new = {"hooks": [{"type": "command", "command": cmd, "timeout": 15}]}
 existing = [e for e in entries if mine(e)]
 if existing and existing[0] == new and len(existing) == 1:
