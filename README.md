@@ -29,6 +29,7 @@ andrea-ai-standards/
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── install.sh
+├── sync.sh
 ├── VERSION
 ├── CHANGELOG.md
 └── skills/
@@ -60,4 +61,4 @@ Codex asks you to trust changed hooks on its next launch; run `codex` once and a
 
 The current version lives in `VERSION` and changes are recorded in `CHANGELOG.md`, following Semantic Versioning: patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance. Every change that alters guidance bumps the version and adds a changelog entry in the same commit.
 
-Keeping the local clone current is the harness's job, not the model's. A `SessionStart` hook in `~/.claude/settings.json` and `~/.codex/hooks.json` runs `git pull --ff-only` on the clone at the start of every session and fails silently when offline or sandboxed. Updated standards apply from the next session.
+Keeping the local clone current is the harness's job, not the model's. A `SessionStart` hook in `~/.claude/settings.json` and `~/.codex/hooks.json` runs `sync.sh`, which fast-forwards the clone to `origin/main` at the start of every session and stays silent when offline or sandboxed. If the clone is on another branch or has local changes or commits that block the update, both tools show a warning with the command to fix it. Updated standards apply from the next session.

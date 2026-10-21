@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.6.1] - 21 October 2026
+
+### Fixed
+
+- Auto-sync: the `SessionStart` hook now runs `sync.sh`, which always follows `main` and warns in Claude Code and Codex when the clone is on another branch or cannot fast-forward, instead of silently updating the wrong branch or nothing. Re-run `install.sh` to replace the old hook.
+
 ## [0.6.0] - 17 October 2026
 
 ### Added
