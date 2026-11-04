@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.7.0] - 04 November 2026
+
+### Added
+
+- `andrea-code-review-council` Skill: on request, two fresh read-only reviewers (Claude Opus 5.5 as a subagent, GPT Sol 6.1 in fast mode through `codex exec`, both at high effort) review the work in parallel each round. They are told to hold their ground, check the previous round's fixes, and label findings by severity and kind. Every disagreement over a blocking or should-fix finding and every functionality change go to Andrea in the same round, with a real example and the effect on the user. A round that led to fixes for blocking or should-fix findings, including fixes that follow Andrea's decisions, is followed by another; after five rounds, or sooner if the same problems keep coming back, Andrea decides, round by round, whether to continue; scores go into the pull request. Re-run `install.sh` to link the new Skill.
+
 ## [0.6.1] - 21 October 2026
 
 ### Fixed
