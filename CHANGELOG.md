@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [0.8.0] - 12 November 2026
+
+### Added
+
+- `andrea-code-review-council` Skill: in T3 Code, Sol now runs as a delegated Codex thread (`delegate_task`), so Andrea sees it next to Opus instead of as a hidden background command. It reviews the shared checkout so uncommitted changes are included. T3 Code has no read-only mode for it, so the before-and-after fingerprint is what catches an edit, and the round's 15-minute deadline now covers Sol too. Elsewhere, including Conductor, Sol still runs through `codex exec` as before.
+
 ## [0.7.0] - 04 November 2026
 
 ### Added
