@@ -2,6 +2,12 @@
 
 Notable changes to these standards. Versions follow [Semantic Versioning](https://semver.org/): patch for wording fixes, minor for new or expanded guidance, major for changes that reverse or remove earlier guidance.
 
+## [1.0.0] - 13 November 2026
+
+### Changed
+
+- `andrea-code-review-council` Skill: Claude Fable 5.2 replaces Claude Opus 5.5 as the Claude reviewer. It is stronger at finding subtle problems, and it is a different model from the Opus sessions that usually write the code, so it is less likely to share their blind spots. A third reviewer was considered and dropped: two Claude models tend to raise the same findings, at twice the cost. Each reviewer now has 20 minutes per round instead of 15, because Fable can take longer on large changes.
+
 ## [0.8.0] - 12 November 2026
 
 ### Added

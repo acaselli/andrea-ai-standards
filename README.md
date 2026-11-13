@@ -42,7 +42,7 @@ andrea-ai-standards/
             └── errors-and-feedback.md
 ```
 
-Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane (component stack, library selection, web app defaults) and routes table work and error or feedback work to their detailed reference standards. `andrea-code-review-council` runs rounds of independent review by Claude Opus and GPT Sol and brings disagreements and functionality changes to me.
+Every personal Skill uses the `andrea-` prefix as part of its actual Skill name. The first is `andrea-ui-design`, which contains the shared UI control plane (component stack, library selection, web app defaults) and routes table work and error or feedback work to their detailed reference standards. `andrea-code-review-council` runs rounds of independent review by Claude Fable and GPT Sol and brings disagreements and functionality changes to me.
 
 The repository will grow from real usage and repeated preferences, not by accumulating generic best practices or speculative placeholder guidance.
 
